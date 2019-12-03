@@ -1,4 +1,5 @@
 class FormProfile {
+
   openFormProfile = () => {//коллбэк для открытия формы профиля
     document.forms.profile.elements.name.value = userInfoName.textContent;
     document.forms.profile.elements.job.value = userInfoJob.textContent;
@@ -22,11 +23,16 @@ class FormProfile {
   }
 
   validateProfileForm = () => {
+      /** REVIEW: Можно лучше: Этот метод можно разбить на 2: проверка валидности, который возвращает true\false и переключение активности кнопок
+       * это поможет упростить код т.к. из свитча можно сразу возвращать false при нахождении первого признака невалидной формы
+       * и поможет разбить ответсвенность функций, что улучшит читаемость и отладку
+       * **/
     let isOk = true;
 
     const formProfileName = document.forms.profile.elements.name;
     const formErrorProfileName = document.querySelector("#error-profile-name");
     switch (validateLenghtStr(formProfileName.value, 2, 30)) {
+        /** REVIEW: Можно лучше: в case можно вставить блок кода {} для читаемости и обьявления переменных  **/
       case 0: formErrorProfileName.textContent = "Это обязательное поле"; isOk = false; break;
       case 1: formErrorProfileName.textContent = ""; break;
       case 2: formErrorProfileName.textContent = "Должно быть от 2 до 30 символов"; isOk = false; break;
@@ -46,9 +52,7 @@ class FormProfile {
       document.querySelector("#profile .popup__button").classList.remove("popup__button_enable");
     }
 
-
   }
-
 
 }
 
