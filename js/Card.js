@@ -32,7 +32,7 @@ class Card {
     this.descCard.appendChild(this.btnLike);
   /** REVIEW: Можно лучше: Можно передать cards через конструктор и сохранить ссылку на него в this.cards. В таком случае не придется брать эту переменную из глобальной области видимости - вдруг её там может не быть? И класс станет более независимым - все данные для его работы будут переданы в конструктор  **/
   //Улучшение не сработало при передаче функции card.appendCard в FormAdd. (?)
-    cards.appendChild(this.oneCard);
+    CARDS.appendChild(this.oneCard);
   }
 
   toggleBigSizeImage = (event) => {
