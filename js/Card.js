@@ -2,6 +2,7 @@ class Card {
   constructor() {
     this.nodes = [];     //массив элементов, для которых будут назначены обработчики событий.
     this.handlers = [];  //массив обработчиков событий.
+    //this.callback = this.callback.bind(this);
   }
 
   appendCard(name, url) {
@@ -72,8 +73,10 @@ class Card {
     this.handlers.push(this.like);
   }
 
-  // в index.js callback будет переопределена для экземпляра card.
-  callback = () => {
+   //в index.js callback будет переопределена для экземпляра card.
+  callback (event) {
   }
+
+
 
 }

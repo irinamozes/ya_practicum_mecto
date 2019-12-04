@@ -5,14 +5,13 @@ window.onload = () => {
   let card = new Card();
 
   function loadCards() {
-    document.removeEventListener('click', card.callback);
     newList.data.forEach(function (item) {
       card.appendCard(item.name, item.link);
     });
     card.createNodesArr(); // функция, формирующая массивы card.nodes и card.handlers.
   }
 
-  document.addEventListener('click', card.collback = (event) => { //навешивание обработчиков кликов по элементам карточки.
+  document.addEventListener('click', card.callback = (event) => { //навешивание обработчиков кликов по элементам карточки.
     let etargetClass = event.target.className;
     let funcIndex = card.nodes.indexOf((etargetClass));
     if (funcIndex >= 0 && newList.data.length !== 0) {
