@@ -18,3 +18,4 @@ function validURL(str) {
     '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
   return !!pattern.test(str);
 }
+/** REVIEW: Отлично!: Утилиты вынесены в отдельный файл  **/

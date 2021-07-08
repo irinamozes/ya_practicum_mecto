@@ -7,16 +7,7 @@
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css">
 
-    <script defer="defer" src="utils/data.js"></script>
-    <script defer="defer" src="utils/enums.js"></script>
-    <script defer="defer" src="utils/utilits.js"></script>
-    <script defer="defer" src="js/CardSettings.js"></script>
-    <script defer="defer" src="js/CardList.js"></script>
-    <script defer="defer" src="js/Card.js"></script>
-    <script defer="defer" src="js/Popups.js"></script>
-    <script defer="defer" src="js/FormProfile.js"></script>
-    <script defer="defer" src="js/FormAdd.js"></script>
-    <script defer="defer" src="js/index.js"></script>
+    <!-- REVIEW: Можно лучше!: Использован defer для загрузки скриптов. Это умно при таком множестве файлов! Но все же лучше перенести их в конец body, чтобы документ, с которым они работают уже был загружен -->
 </head>
 <body>
 <div class="root">
@@ -73,6 +64,13 @@
         </div>
     </div>
 </div>
-
+    <script src="utils/data.js"></script>
+    <script src="utils/enums.js"></script>
+    <script src="utils/utilits.js"></script>
+    <script src="js/CardList.js"></script>
+    <script src="js/Card.js"></script>
+    <script src="js/FormProfile.js"></script>
+    <script src="js/FormAdd.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

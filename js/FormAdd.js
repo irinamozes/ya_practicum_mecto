@@ -1,4 +1,8 @@
-class FormAdd extends CardSettings {
+class FormAdd {
+  constructor(appendCardFunc, addToListFunc) {
+    this.appendCardFunc = appendCardFunc;
+    this.addToListFunc = addToListFunc;
+  }
 
   toggleFormAdd = () => {//коллбэк для открытия и закрытия формы добавления карточки
     this.validateAddCardForm();
@@ -12,12 +16,16 @@ class FormAdd extends CardSettings {
     if (!document.querySelector("#add-card .popup__button").classList.contains("popup__button_enable")) {//кнопка "выключена", т.е. данные в форме невалидные
       return;
     }
-    addOneCard(form.elements.name.value, form.elements.link.value);
-    toggleFormAdd();
+    this.appendCardFunc(form.elements.name.value, form.elements.link.value);
+    this.toggleFormAdd();
+
+    //Преобразование списка карточек после добавления новой карточки, возможно, отправка на сервер.
+    this.addToListFunc();
+
     form.reset();
   }
 
-  validateAddCardForm = (event) => {
+    validateAddCardForm = () => {
     let isOk = true;
 
     const formNewName = document.forms.new.elements.name;
@@ -42,25 +50,6 @@ class FormAdd extends CardSettings {
     } else {
       document.querySelector("#add-card .popup__button").classList.remove("popup__button_enable");
     }
-  }
-
-
-  validateLenghtStr = (str, min, max) => {
-    if (str.length === 0)
-      return 0;
-    if (str.length >= min && str.length <= max)
-      return 1;
-    return 2;
-  }
-
-  validURL = (str) => {
-    var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
-      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-      '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
-    return !!pattern.test(str);
   }
 
 }
